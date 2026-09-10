@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ECO GAS POINT Murang'a - 24HRS</title>
+<link rel="manifest" href="data:application/json;base64,eyJuYW1lIjoiRUNPIEdBUyBQT0lOVCAtIE11cmFuZydhIiwic2hvcnRfbmFtZSI6IkVjbyBHYXMiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzBhNGE3YSIsInRoZW1lX2NvbG9yIjoiIzE2YTM0YSIsImljb25zIjpbXX0=">
+<meta name="theme-color" content="#0a4a7a">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}body{background:#f0faf0}
+header{background:linear-gradient(90deg,#0a4a7a,#16a34a);color:#fff;padding:25px 15px;text-align:center}
+.badge{display:inline-block;background:#22c55e;padding:8px 14px;border-radius:20px;font-weight:bold;margin:5px}
+.badge.dark{background:#001a33}
+.wrap{max-width:500px;margin:auto;padding:15px}
+.card{background:#fff;border-radius:16px;padding:15px;margin:12px 0;box-shadow:0 4px 12px rgba(0,0,0,.1);display:flex;justify-content:space-between;align-items:center}
+.card button{background:#0a4a7a;color:#fff;border:0;padding:10px 15px;border-radius:8px;font-weight:bold}
+#cart{background:#fff;border-radius:16px;padding:18px;margin-top:15px}
+.btn{display:block;width:100%;padding:16px;background:#25D366;color:#fff;text-align:center;border-radius:12px;font-weight:bold;text-decoration:none;margin-top:12px;font-size:17px}
+.btn.call{background:#0a4a7a}
+input,select{width:100%;padding:12px;border-radius:10px;border:1px solid #ccc;margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+<h1>ECO GAS POINT</h1>
+<p>📍 Murang'a - Gas Delivery Service</p>
+<div class="badge">⚡ UNDER 5 MINS DELIVERY</div>
+<div class="badge dark">🕒 OPEN 24 HOURS</div>
+<p style="margin-top:8px">FREE DELIVERY • 0745483413</p>
+</header>
+<div class="wrap">
+<div class="card"><div><b>6kg</b><br>most liked</div><button onclick="add('6kg',1050)">refill Ksh 1060  - Add</button></div>
+<div class="card"><div><b>13kg</b><br>Most Popular</div><button onclick="add('13kg',2200)">refill Ksh 2400 - Add</button></div>
+<div class="card"><div><b>22.5kg</b><br>Business</div><button onclick="add('22.5kg',5500)">refill Ksh 5500 - Add</button></div>
+<div class="card"><div><b>50kg</b><br>Hotel</div><button onclick="add('50kg',9500)"> refill Ksh 9500 - Add</button></div>
+
+<div id="cart">
+<h3>🛒 Your Order</h3
+<div id="items">Empty</div>
+<input id="name" placeholder="Your Name">
+<input id="loc" placeholder="Your Area in Murang'a">
+<select id="type"><option>Refill</option><option>New Cylinder</option></select>
+<h3 id="total">Total: Ksh 0 + FREE DELIVERY</h3>
+<a href="#" class="btn" onclick="orderWA()">Order on WhatsApp 0745483413 - 24HRS</a>
+<a href="tel:0745483413" class="btn call">📞 Call 0745483413/0757429370</a>
+<p style="text-align:center;margin-top:10px;font-size:12px">Tap Share > Add to Home Screen to install App</p>
+</div>
+</div>
+<script>
+let cart=[],total=0;
+function add(s,p){cart.push({s,p});total+=p;render()}
+function render(){let h='';cart.forEach((c,i)=>{h+=${i+1}. ${c.s} - ${c.p} <span onclick="cart.splice(${i},1);total-=${c.p};render()" style="color:red">[x]</span><br>});if(!cart.length)h='Empty';document.getElementById('items').innerHTML=h;document.getElementById('total').innerText='Total: Ksh '+total+' + FREE DELIVERY'}
+function orderWA(){if(!cart.length){alert('Add gas');return}let n=document.getElementById('name').value||'Customer';let l=document.getElementById('loc').value||'Muranga';let t=document.getElementById('type').value;let it=cart.map(c=>c.s).join(', ');let msg=Hello ECO GAS POINT%0AName:${n}%0ALocation:${l}%0AService:${t}%0AOrder:${it}%0ATotal:Ksh ${total} FREE DELIVERY%0ADELIVERY: UNDER 5 MINS - 24HRS;window.open('https://wa.me/254745483413?text='+msg,'_blank')}
+</script>
+</body>
+</html>
